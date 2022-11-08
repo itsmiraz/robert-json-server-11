@@ -20,7 +20,9 @@ async function run() {
     try {
 
         const serviceCollection = client.db('RobertJsonService').collection('services')
+        const reviewCollection = client.db('ServiceReview').collection('reviews')
 
+        // service API
         app.get('/services', async (req, res) => {
             const query = {}
             const cursor = serviceCollection.find(query);
@@ -32,6 +34,31 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const result = await serviceCollection.findOne(query)
             res.send(result)
+        })
+
+        // Review API
+
+        app.post('/review', async (req, res) => {
+            const body = req.body;
+            console.log(body)
+            const result = await reviewCollection.insertOne(body)
+            res.send(result)
+        })
+        app.get('/review', async (req, res) => {
+            const email = req.query.email;
+            const id = req.query.serviceId;
+            console.log(email, id);
+            let query = {};
+            if (req.query.email || req.query.serviceId) {
+                query = {
+                    customerEmail: req.query.email,
+                    serviceID: req.query.serviceId
+                }
+            }
+            const cursor = reviewCollection.find(query)
+            const review = await cursor.toArray()
+            res.send(review)
+
         })
 
     }
