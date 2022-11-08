@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Wedding Photography",
+        "image_url": "https://images.unsplash.com/photo-1621801306185-8c0ccf9c8eb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGluZGlhbiUyMHdlZGRpbmd8ZW58MHx8MHx8&w=1000&q=80",
+        "price": 1000,
+        "details": "This my  most popular service.In this service i went on shoot for full wedding.I deliver 150+ image of a wedding plus 30 HD print out.Also i am doing wedding photography for a long time.I provide some of the best service.My most popular service it is.I ensure that my customer have full staisfaction from my work"
+    },
+    {
+        "title": "Personal Photography",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSivDog-43Sy4MYeGBFksIMigIkd8zMKEfCeg&usqp=CAU",
+        "price": 500,
+        "details": "This service is our second most popular service.In this service we went on a shoot for 4-5 hours.In that time i shoot all time.Then the customer has the oppurtunity to choose the best photo.Also I always try my best to give the best service.i also give them a unedited version.So that they can edit their own photos. "
+    },
+    {
+        "title": "Bithday Photography",
+        "image_url": "https://i.ibb.co/C8Ghh6c/dev-quiz.jpg",
+        "price": 200,
+        "details": "This is our most affortable service.Because the shoot is for only on night.That's why this is soo affortable.But we give full support to our customer.Also ensure we will never miss any shot.Normally We send two photographers but in this service only one photopher will go.Because this shoot is short time shoot that's why we sent one photographer"
+    },
+    {
+        "title": "Juornalism Photography",
+        "image_url": "https://img.freepik.com/premium-photo/fuel-your-soul-with-travel-traveler-wait-car-fashion-style-looking-trendy-macho-man-with-camera-baggage-capture-adventure-journalist-photographer-glasses-sexy-man-touristic-reporter_474717-45971.jpg?w=2000",
+        "price": 300,
+        "details": "Suppose you are Content Creator and you need a photographer for your recent project.You can hire me for your project.I have all the updated equipments.You just have to give a idea or genre and i will take that tpye of photos.Also you can take me with you .I will give my best for your project.I always ensure that first delivery and quality work."
+    },
+    {
+        "title": "Wedding Videography",
+        "image_url": "https://michaelwestcott.co/wp-content/uploads/2021/11/Michael-Westcott-Films-Scotland-Wedding-Videographer-Glidecam.jpg",
+        "price": 1200,
+        "details": "This is my new Service.I am taking photos for last 10 years.I know videography also.Infact i shoot video for my many clients.That's why i lanched this service.I will shoot your full wedding and make into a short documentry.In this shoot we ensure full HD video,Fast delivery.If you dont like the edit we will edit that video for you again."
+    },
+    {
+        "title": "Sports Photography",
+        "image_url": "https://michaelwestcott.co/wp-content/uploads/2021/11/Michael-Westcott-Films-Scotland-Wedding-Videographer-Glidecam.jpg",
+        "price": 400,
+        "details": "You are a sports man.You need some photos about your club.I am here.I will take some best sports photos for you .Also i will deliver them as soon as possible.In this service we shoot for full day.Also you have oppurtunity to select the photos.If you need that type of photogpher please feel free to contact me.Also we ensure full staisfaction of our customer."
+    }
+]
