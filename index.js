@@ -35,6 +35,11 @@ async function run() {
             const result = await serviceCollection.findOne(query)
             res.send(result)
         })
+        app.post('/services', async (req, res) => {
+            const body = req.body;
+            const result = await serviceCollection.insertOne(body)
+            res.send(result)
+        })
 
         // Review API
 
@@ -43,6 +48,7 @@ async function run() {
             const result = await reviewCollection.insertOne(body)
             res.send(result)
         })
+
         app.get('/review', async (req, res) => {
             let query = {};
             const cursor = reviewCollection.find(query)
@@ -50,9 +56,27 @@ async function run() {
             res.send(review)
 
         })
+        app.get('/review/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await reviewCollection.findOne(query)
+            res.send(result)
+        })
+        app.put('/review/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) }
+            const body = req.body;
+            const option = { upsert: true }
+            const updateUser = {
+                $set: {
+                    review: body.review,
+                }
+            }
+            const result = await reviewCollection.updateOne(filter, updateUser, option)
+            res.send(result)
+        })
         app.delete('/review/:id', async (req, res) => {
             const id = req.params.id;
-
             const query = { _id: ObjectId(id) }
             const result = await reviewCollection.deleteOne(query);
             res.send(result)
