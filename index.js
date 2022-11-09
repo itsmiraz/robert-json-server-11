@@ -77,16 +77,23 @@ async function run() {
             const result = await reviewCollection.insertOne(body)
             res.send(result)
         })
+        app.get('/review', async (req, res) => {
+            let query = {}
+            const cursor = reviewCollection.find(query).sort({ time: -1 })
 
+            const review = await cursor.toArray()
+            res.send(review)
+
+        })
         app.get('/review', verifyJWT, async (req, res) => {
             const decoded = req.decoded;
-            const email = req.query.email
+
             if (decoded.email !== req.query.email) {
                 return res.status(403).send({ message: 'Forbidend access' })
             }
 
             let query = {}
-            console.log(email);
+
             if (req.query.email) {
                 query = {
                     customerEmail: req.query.email
@@ -98,6 +105,7 @@ async function run() {
             res.send(review)
 
         })
+
         app.get('/review/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
