@@ -13,8 +13,26 @@ app.use(express.json())
 
 
 
+
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.fpgnyx0.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+
+function verifyJWT(req, res, next) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+        return res.status(401).send({ meassage: 'unathorized Access' })
+    }
+    const token = authHeader.split(' ')[1];
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
+        if (err) {
+            return res.status(401).send({ message: 'Unauthorized Access' })
+        }
+        req.decoded = decoded;
+        next()
+    })
+}
+
 
 
 async function run() {
@@ -27,7 +45,9 @@ async function run() {
         // jwt api
         app.post('/jwt', (req, res) => {
             const user = req.body;
+
             const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' })
+            console.log(token);
             res.send({ token })
         })
 
@@ -58,8 +78,21 @@ async function run() {
             res.send(result)
         })
 
-        app.get('/review', async (req, res) => {
-            let query = {};
+        app.get('/review', verifyJWT, async (req, res) => {
+            const decoded = req.decoded;
+            const email = req.query.email
+            if (decoded.email !== req.query.email) {
+                return res.status(403).send({ message: 'Forbidend access' })
+            }
+
+            let query = {}
+            console.log(email);
+            if (req.query.email) {
+                query = {
+                    customerEmail: req.query.email
+                }
+            }
+
             const cursor = reviewCollection.find(query)
             const review = await cursor.toArray()
             res.send(review)
