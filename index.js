@@ -52,6 +52,12 @@ async function run() {
         })
 
         // service API
+        app.get('/threeservices', async (req, res) => {
+            const query = {}
+            const cursor = serviceCollection.find(query).sort({ _id: -1 });
+            const result = await cursor.limit(3).toArray()
+            res.send(result)
+        })
         app.get('/services', async (req, res) => {
             const query = {}
             const cursor = serviceCollection.find(query);
