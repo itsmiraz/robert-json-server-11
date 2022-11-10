@@ -77,10 +77,9 @@ async function run() {
             const result = await reviewCollection.insertOne(body)
             res.send(result)
         })
-        app.get('/review', async (req, res) => {
+        app.get('/allreview', async (req, res) => {
             let query = {}
             const cursor = reviewCollection.find(query).sort({ time: -1 })
-
             const review = await cursor.toArray()
             res.send(review)
 
